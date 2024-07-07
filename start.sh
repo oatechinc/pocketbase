@@ -1,6 +1,8 @@
 #!/bin/sh
 
-/filebrowser -r /pb -p 8080 username $WEB_USERNAME password $WEB_PASSWORD &
+/filebrowser config init --username $WEB_USERNAME --password $WEB_PASSWORD
+
+/filebrowser -r /pb -p 8080 &
 
 # 启动第二个服务
 /pb/pocketbase serve --http=0.0.0.0:443 &
