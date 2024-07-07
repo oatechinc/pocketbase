@@ -13,7 +13,6 @@ RUN unzip /tmp/pb.zip -d /pb/
 EXPOSE 443
 EXPOSE 8080
 
-ARG 
 ARG WEB_PASSWORD
 ARG WEB_USERNAME
 
