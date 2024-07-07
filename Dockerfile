@@ -13,6 +13,13 @@ RUN unzip /tmp/pb.zip -d /pb/
 EXPOSE 443
 EXPOSE 8080
 
+ARG 
+ARG WEB_PASSWORD
+ARG WEB_USERNAME
+
+ENV WEB_PASSWORD=${WEB_PASSWORD}
+ENV WEB_USERNAME=${WEB_USERNAME}
+
 # copy start script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
