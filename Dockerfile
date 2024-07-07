@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM filebrowser/filebrowser:latest
 
 ARG PB_VERSION=0.22.14
 
@@ -10,10 +10,8 @@ RUN apk add --no-cache \
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
 RUN unzip /tmp/pb.zip -d /pb/
 
-RUN curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
-
 EXPOSE 443
 EXPOSE 8080
 
 # start PocketBase
-CMD ["filebrowser", "-r", "/pb", "-p", "8080"]
+ENTRYPOINT ["/filebrowser"]
