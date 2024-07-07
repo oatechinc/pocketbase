@@ -13,7 +13,5 @@ RUN unzip /tmp/pb.zip -d /pb/
 EXPOSE 443
 EXPOSE 8080
 
-RUN /filebrowser -r /pb -p 8080 &
-
 # start PocketBase
-ENTRYPOINT ["/pb/pocketbase", "serve", "--http=0.0.0.0:443"]
+ENTRYPOINT ["/filebrowser -r /pb -p 8080 && /pb/pocketbase serve --http=0.0.0.0:443"]
