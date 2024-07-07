@@ -13,5 +13,9 @@ RUN unzip /tmp/pb.zip -d /pb/
 EXPOSE 443
 EXPOSE 8080
 
-# start PocketBase
-ENTRYPOINT ["/filebrowser -r /pb -p 8080 && /pb/pocketbase serve --http=0.0.0.0:443"]
+# copy start script
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# start PocketBase and filebrowser via start.sh
+ENTRYPOINT ["/start.sh"]
