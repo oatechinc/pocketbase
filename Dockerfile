@@ -14,4 +14,4 @@ EXPOSE 443
 EXPOSE 8080
 
 # start PocketBase
-ENTRYPOINT ["/pb/pocketbase", "serve", "--http=0.0.0.0:443", "&&", "/filebrowser", "-r", "/pb", "-p", "8080"]
+ENTRYPOINT ["/pb/pocketbase", "serve", "--http=0.0.0.0:443", "&&", "/filebrowser"]
