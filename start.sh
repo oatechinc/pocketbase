@@ -5,7 +5,6 @@ echo "WEB_PASSWORD: $WEB_PASSWORD"
 
 /filebrowser config init
 /filebrowser users add $WEB_USERNAME $WEB_PASSWORD
-/filebrowser users update $WEB_USERNAME --password $WEB_PASSWORD
 
 
 /filebrowser -r /pb -p 8080 &
