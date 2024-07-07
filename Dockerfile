@@ -14,4 +14,4 @@ EXPOSE 443
 EXPOSE 8080
 
 # start PocketBase
-CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:443", "&&", "filebrowser", "-r", "/pb", "-p", "8080"]
+CMD ["filebrowser", "-r", "/pb", "-p", "8080"]
