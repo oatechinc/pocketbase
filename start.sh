@@ -1,3 +1,5 @@
+#!/bin/bash
+
 /filebrowser -r /pb -p 8080 &
 
 # 启动第二个服务
