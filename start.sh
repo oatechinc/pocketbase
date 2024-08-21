@@ -19,7 +19,7 @@ echo "PORT: $PORT"
 
 /filebrowser -r /pb -p 8080 &
 
-/pb/pocketbase serve --http=0.0.0.0:$WEB_PASSWORD &
+/pb/pocketbase serve --http=0.0.0.0:$PORT &
 
 # 等待所有后台进程
 wait
