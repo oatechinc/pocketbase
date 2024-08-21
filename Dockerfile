@@ -1,6 +1,6 @@
 FROM filebrowser/filebrowser:latest
 
-ARG PB_VERSION=0.22.14
+ARG PB_VERSION=0.22.19
 
 RUN apk add --no-cache \
     unzip \
