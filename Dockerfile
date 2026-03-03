@@ -11,8 +11,8 @@ RUN apk add --no-cache \
     unzip \
     ca-certificates
 
-# Copy Filebrowser from Stage 1
-COPY --from=fb-base /filebrowser /usr/local/bin/filebrowser
+# Copy Filebrowser from Stage 1 (Fixed path!)
+COPY --from=fb-base /bin/filebrowser /usr/local/bin/filebrowser
 
 # Download, unzip, and place PocketBase, then clean up the zip file
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
