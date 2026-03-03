@@ -1,29 +1,36 @@
-FROM filebrowser/filebrowser:latest
+# Stage 1: Grab the filebrowser binary
+FROM filebrowser/filebrowser:latest AS fb-base
+
+# Stage 2: Build the final image using Alpine
+FROM alpine:latest
 
 ARG PB_VERSION=0.22.19
 
+# Install dependencies
 RUN apk add --no-cache \
     unzip \
     ca-certificates
 
-# download and unzip PocketBase
+# Copy Filebrowser from Stage 1
+COPY --from=fb-base /filebrowser /usr/local/bin/filebrowser
+
+# Download, unzip, and place PocketBase, then clean up the zip file
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
-RUN unzip /tmp/pb.zip -d /tmp/pb
+RUN unzip /tmp/pb.zip -d /tmp/pb && \
+    mv /tmp/pb/pocketbase /usr/local/bin/pocketbase && \
+    rm -rf /tmp/pb /tmp/pb.zip
 
-EXPOSE 443
-EXPOSE 8080
+EXPOSE 443 8080
 
-ARG WEB_PASSWORD
 ARG WEB_USERNAME
 ARG PORT
 
-ENV WEB_PASSWORD=${WEB_PASSWORD}
 ENV WEB_USERNAME=${WEB_USERNAME}
 ENV PORT=${PORT}
 
-# copy start script
+# Copy start script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-# start PocketBase and filebrowser via start.sh
+# Start PocketBase and Filebrowser via start.sh
 ENTRYPOINT ["/start.sh"]
