@@ -4,7 +4,7 @@ FROM filebrowser/filebrowser:latest AS fb-base
 # Stage 2: Build the final image using Alpine
 FROM alpine:latest
 
-ARG PB_VERSION=0.22.19
+ARG PB_VERSION=0.36.6
 
 # Install dependencies
 RUN apk add --no-cache \
