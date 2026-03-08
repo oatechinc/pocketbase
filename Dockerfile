@@ -8,6 +8,7 @@ ARG PB_VERSION=0.22.19
 
 # Install dependencies
 RUN apk add --no-cache \
+    caddy \
     unzip \
     ca-certificates
 
